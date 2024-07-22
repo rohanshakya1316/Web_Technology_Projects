@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 200px;
+            margin: 50px auto;
+            gap: 10px;
+        }
+
+        .calculator button {
+            padding: 20px;
+            font-size: 1.2em;
+        }
+
+        .display {
+            grid-column: span 4;
+            padding: 20px;
+            font-size: 1.2em;
+            text-align: right;
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <button onclick="appendNumber(7)">7</button>
+        <button onclick="appendNumber(8)">8</button>
+        <button onclick="appendNumber(9)">9</button>
+        <button onclick="setOperator('/')">/</button>
+        <button onclick="appendNumber(4)">4</button>
+        <button onclick="appendNumber(5)">5</button>
+        <button onclick="appendNumber(6)">6</button>
+        <button onclick="setOperator('*')">*</button>
+        <button onclick="appendNumber(1)">1</button>
+        <button onclick="appendNumber(2)">2</button>
+        <button onclick="appendNumber(3)">3</button>
+        <button onclick="setOperator('-')">-</button>
+        <button onclick="appendNumber(0)">0</button>
+        <button onclick="appendDecimal()">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="setOperator('+')">+</button>
+        <button onclick="clearDisplay()">C</button>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let currentNumber = '0';
+        let previousNumber = '';
+        let operator = null;
+
+        function appendNumber(number) {
+            if (currentNumber === '0') {
+                currentNumber = number.toString();
+            } else {
+                currentNumber += number.toString();
+            }
+            updateDisplay();
+        }
+
+        function appendDecimal() {
+            if (!currentNumber.includes('.')) {
+                currentNumber += '.';
+            }
+            updateDisplay();
+        }
+
+        function setOperator(op) {
+            if (operator !== null) {
+                calculate();
+            }
+            previousNumber = currentNumber;
+            currentNumber = '0';
+            operator = op;
+        }
+
+        function calculate() {
+            let result;
+            const prev = parseFloat(previousNumber);
+            const curr = parseFloat(currentNumber);
+
+            if (isNaN(prev) || isNaN(curr)) return;
+
+            switch (operator) {
+                case '+':
+                    result = prev + curr;
+                    break;
+                case '-':
+                    result = prev - curr;
+                    break;
+                case '*':
+                    result = prev * curr;
+                    break;
+                case '/':
+                    result = prev / curr;
+                    break;
+                default:
+                    return;
+            }
+            currentNumber = result.toString();
+            operator = null;
+            previousNumber = '';
+            updateDisplay();
+        }
+
+        function clearDisplay() {
+            currentNumber = '0';
+            previousNumber = '';
+            operator = null;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            display.innerText = currentNumber;
+        }
+    </script>
+</body>
+</html>

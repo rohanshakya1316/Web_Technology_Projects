@@ -1,0 +1,122 @@
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: auto;
+}
+
+.alert{
+    --foreground-color: #222222;
+    --background-color: #eeeeee;
+
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+    width: 400px; /* Set a fixed width */
+    background-color: var(--background-color);
+    display: none; /* Initially hide all alerts */
+    margin-top: 10px; /* Space between alerts */
+}
+.alert {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.alert.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.alert-icon {
+    display: flex;
+    align-items: center;
+}
+
+.alert-text {
+    margin-left: 1em;
+    font-size: 1.15em;
+    font-weight: 500;
+    font-family: 'Lexend', sans-serif;
+}
+
+.alert-icon .material-symbols-outlined,
+.alert-text {
+    color: var(--foreground-color);
+}
+
+.alert-info {
+    --foreground-color: #ffffff;
+    --background-color: #6b6c9c;
+}
+
+.alert-warning {
+    --foreground-color: #ffffff;
+    --background-color: #ecd103;
+}
+
+.alert-success {
+    --foreground-color: #ffffff;
+    --background-color: #46b63e;
+}
+
+.alert-error {
+    --foreground-color: #ffffff;
+    --background-color: #cb0000;
+}
+
+.alert.show {
+    opacity: 1;
+    transform: translateY(0);
+} 
+
+/* Button styles */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height to center vertically */
+}
+
+button {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 15px 32px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Get the element to line up beside other elements */
+    font-size: 16px; /* Increase font size */
+    margin: 4px 2px; /* Add some margin */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    transition-duration: 0.4s; /* 0.4 second transition effect to hover state */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Add a green background color to the buttons when hovering */
+button:hover {
+    background-color: white; /* White background on hover */
+    color: black; /* Black text on hover */
+    border: 2px solid #4CAF50; /* Add a green border */
+}
